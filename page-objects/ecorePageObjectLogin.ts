@@ -31,10 +31,7 @@ export class InvoiceDetails {
     readonly duoDate: Locator;
     readonly invoiceNumber: Locator;
     readonly bookingCode: Locator;
-    readonly CUSTOMER_DETAILS: [string, string, string];
     readonly customerDetailLine1: Locator;
-    readonly customerDetailLine2: Locator;
-    readonly customerDetailLine3: Locator;
     readonly room: Locator;
     readonly checkIn: Locator;
     readonly checkOut: Locator;
@@ -46,22 +43,19 @@ export class InvoiceDetails {
 
     constructor(page: Page) {
         this.nameHotel = page.getByText("Rendezvous Hotel");
-        this.invoiceDate = page.locator("/html/body/section/div/ul/li[1]/text()");
-        this.duoDate = page.locator("/html/body/section/div/ul/li[2]/text()");
+        this.invoiceDate = page.locator("//*[contains(text(),' 14/01/2018')]");
+        this.duoDate = page.locator("//*[contains(text(),' 15/01/2018')]");
         this.invoiceNumber = page.getByText("Invoice #110 details");
-        this.bookingCode = page.getByText("Invoice #110 details");
-        this.customerDetailLine1 = page.locator("/html/body/section/div/div/text()[1]");
-        this.customerDetailLine2 = page.locator("/html/body/section/div/div/text()[2]");
-        this.customerDetailLine3 = page.locator("/html/body/section/div/div/text()[3]");
-        this.CUSTOMER_DETAILS = ["JOHNY SMITH", "R2, AVENUE DU MAROC", "123456"];
+        this.bookingCode = page.getByText("0875");
+        this.customerDetailLine1 = page.locator("//*[contains(text(),'JOHNY SMITH')]");
         this.room = page.getByText("Superior Double");
-        this.checkIn = page.locator("/html/body/section/div/table[1]/tbody/tr[5]/td[2]");
-        this.checkOut = page.locator("/html/body/section/div/table[1]/tbody/tr[6]/td[2]");
-        this.totalStayCount = page.locator("/html/body/section/div/table[1]/tbody/tr[3]/td[2]");
-        this.totalStayAmount = page.locator("/html/body/section/div/table[1]/tbody/tr[4]/td[2]");
-        this.depositNow = page.locator("/html/body/section/div/table[2]/tbody/tr/td[1]");
-        this.taxVat = page.locator("/html/body/section/div/table[2]/tbody/tr/td[2]");
-        this.totalAmount = page.locator("/html/body/section/div/table[2]/tbody/tr/td[3]");
+        this.checkIn = page.locator("//table[@class='table'][1] //tbody/tr[5]/td[2]");
+        this.checkOut = page.locator("//table[@class='table'][1] //tbody/tr[6]/td[2]");
+        this.totalStayCount = page.locator("//table[@class='table'][1] //tbody/tr[3]/td[2]");
+        this.totalStayAmount = page.locator("//table[@class='table'][1] //tbody/tr[4]/td[2]");
+        this.depositNow = page.locator("//table[@class='table'][2] /tbody/tr/td[1]");
+        this.taxVat = page.locator("//table[@class='table'][2] /tbody/tr/td[2]");
+        this.totalAmount = page.locator("//table[@class='table'][2] /tbody/tr/td[3]");
 
 
 
